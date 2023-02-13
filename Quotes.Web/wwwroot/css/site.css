@@ -1,0 +1,79 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.alert-dismissible .btn-close {
+    padding: 0.2rem 1.60rem !important;
+}
+
+span#bgCounter::after {
+    font: 800 30px system-ui;
+    content: counter(count);
+    animation: counter 5s linear infinite alternate;
+    counter-reset: count 0;
+}
+
+@keyframes counter {
+    0% {
+        counter-increment: count 0;
+    }
+
+    10% {
+        counter-increment: count 1;
+    }
+
+    20% {
+        counter-increment: count 2;
+    }
+
+    30% {
+        counter-increment: count 3;
+    }
+
+    40% {
+        counter-increment: count 4;
+    }
+
+    50% {
+        counter-increment: count 5;
+    }
+
+    60% {
+        counter-increment: count 6;
+    }
+
+    70% {
+        counter-increment: count 7;
+    }
+
+    80% {
+        counter-increment: count 8;
+    }
+
+    90% {
+        counter-increment: count 9;
+    }
+
+    100% {
+        counter-increment: count 10;
+    }
+}

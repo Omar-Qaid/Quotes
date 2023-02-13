@@ -1,0 +1,78 @@
+﻿@model Quotes.Web.Models.QuoteViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Quotes</h1>
+<br />
+<p>
+    <a class="btn btn-primary" asp-action="Create" asp-route-id="@Model.AuthorId">Create New</a>
+</p>
+
+<form asp-controller="Quotes" asp-action="Index">
+    <div class="row">
+        <div class="col-sm-4 col-md-6">
+            <div class="form-group">
+                <select asp-for="AuthorId" name="AuthorId" class="Default form-control" asp-items="@(new SelectList(Model.Authors,"Id","Name",Model.AuthorId))">
+                    <option>All</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+          <div class="form-group">
+                <input class="btn btn-outline-info" type="submit" value="Search" />
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-2">
+            <div class="form-group">
+                <a class="btn btn-danger" asp-action="RandomQuote">&nbsp;Random Quote&nbsp;</a>
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+
+<table class="table table-bordered border-dark table-hover table-responsive-lg">
+    <thead class="table-dark">
+        <tr class="table-dark">
+            <th>
+                @Html.DisplayNameFor(model => model.Quotes.First().Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quotes.First().Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quotes.First().AuthorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quotes.First().CreatedAt)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Quotes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index" asp-controller="Authors">Back to Author List </a>
+</div>

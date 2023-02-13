@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Quotes.Core.Entities.Author>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Authors</h1>
+<br />
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New </a>
+</p>
+
+<table class="table table-bordered border-dark table-hover table-responsive-lg">
+    <thead class="table-dark">
+        <tr class="table-dark">
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    <a asp-action="Index"  asp-controller="Quotes" asp-route-authorId="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
